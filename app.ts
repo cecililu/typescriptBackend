@@ -1,1 +1,0 @@
-const greetings :string="hello";
