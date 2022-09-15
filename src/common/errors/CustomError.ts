@@ -7,9 +7,9 @@ export abstract class CustomError extends Error{
 
   abstract statusCode: number;
 
-  abstract serialize():{
+  abstract serializeErrors():{
     message:string;
-    feild?:string[];
+    feild? :string[];
   }
 
 }
