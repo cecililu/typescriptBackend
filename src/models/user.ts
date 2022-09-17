@@ -31,7 +31,7 @@ const userSchema=new mongoose.Schema<UserDoc>(
     role:{
         type: String,
         enum : Role,
-        default:Role.user
+        default: Role.user
     },
     name:String,
 },
