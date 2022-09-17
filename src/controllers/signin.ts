@@ -11,3 +11,4 @@ const signInHandler=async(req:Request,res:Response)=>{
  
    }
 }
+export default signInHandler;
