@@ -8,4 +8,5 @@ const router=Router()
 router.use(signInHandlerRoute);
 router.use(signUpHandlerRoute);
 router.use(getProfileRouter);
+
 export {router as authRouter};
