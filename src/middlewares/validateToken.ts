@@ -7,16 +7,16 @@ interface UserPayload {
     id: string;
     email: string;
     iat: string;
-  }
+}
+
 declare global {
     namespace Express {
      interface Request {
        currentUser?:UserPayload;   
        userData?:UserDoc 
     }
+    }
 }
-   
-  }
 
 const validateToken= (req:Request,res:Response,next:NextFunction)=>{
     const token=req.headers.authorization!.split(' ')[1]
