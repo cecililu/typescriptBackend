@@ -1,27 +1,31 @@
 import express, { application,NextFunction,Request,Response } from "express" ;
 import { NotAuthorized } from "../common/errors/NotAuthorized";
+import jwt from "jsonwebtoken";
+import { UserDoc } from "../models/user";
 
-const jwt=require('jsonwebtoken');
-
-declare namespace Express {
-    export interface Request {
-        user: any;
+interface UserPayload {
+    id: string;
+    email: string;
+    iat: string;
+  }
+declare global {
+    namespace Express {
+     interface Request {
+       currentUser?:UserPayload;   
+       userData?:UserDoc 
     }
-    export interface Response {
-        user: any;
-    }
+}
+   
   }
 
-const validateToken= (req:any,res:Response,next:NextFunction)=>{
-   try{
-    const token=req.header('Authorization')?.split(' ')[1]
-    const verified= jwt.verify(token,'secret')
-    console.log(verified)
-   // req.user=verified
-   // console.log(req.user)
-   
+const validateToken= (req:Request,res:Response,next:NextFunction)=>{
+    const token=req.headers.authorization!.split(' ')[1]
+    try{
+    const verified= jwt.verify(token,"secret") as unknown as UserPayload
+    req.currentUser = verified
    }catch(error){
-    throw new NotAuthorized((error as any).message ? (error as any).message : "Something bad")
+
+    throw new NotAuthorized('Not authorized')
   
 }
  }
