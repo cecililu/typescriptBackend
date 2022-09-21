@@ -1,11 +1,9 @@
 import { Router } from "express";
 import { getProfileHandler } from "../../controllers/profile";
-import {validateToken} from "../../middlewares/validateToken.js"
+import {validateToken} from "../../middlewares/validateToken"
 
 const router=Router()
 
+router.post('/profilelocked', validateToken ,getProfileHandler)
 
-router.get('/Profilelocked', validateToken,getProfileHandler)
-
-
-export{router as getProfileRouter}
+export{router as getProfileRouter} 
