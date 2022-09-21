@@ -32,7 +32,7 @@ const signInHandler=async(req:Request,res:Response)=>{
     });
    }  
    catch(error){
-   throw new BadRequest( (error as any).message ? (error as any).message :'Something went wrong');
+    throw new BadRequest( (error as any).message ? (error as any).message :'Something went wrong');
  
    }
 }
