@@ -9,10 +9,11 @@ const signUpHandler=async(req:Request,res:Response)=>{
         const { email, password, name ,role} = req.body;
         const salt = genSaltSync(10); 
         const hash = hashSync(password, salt);
+       
         try {
-          const user = await User.build({
+            const user = await User.build({
             email,
-            password,
+            password: hash,
             name,
             role: Role.user,
           }).save();

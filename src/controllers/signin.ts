@@ -16,13 +16,13 @@ const signInHandler=async(req:Request,res:Response)=>{
    //   const hash = hashSync(password, salt);
      const validpass= await compare(password ,existUser.password)
     if(!validpass){
-      throw new NotAuthorized('pasword invalid')
+      throw new NotAuthorized('password invalid')
     } 
    const accessToken=sign(
       {
          email: email,
          id:existUser.id
-      },'secret'
+      },"secret"
      )
 
      res.status(200).send({
