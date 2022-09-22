@@ -1,5 +1,4 @@
 import express, { Request,Response } from "express" ;
-import { BadRequest } from "../common/errors/BadRequest";
 import { NotAuthorized } from "../common/errors/NotAuthorized";
 import { Role, User } from "../models/user";
 import  jwt from 'jsonwebtoken';
